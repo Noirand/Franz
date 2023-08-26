@@ -11,7 +11,7 @@ do
 	nkf -Lu --overwrite "$TARGET"
 
 	# remove unnessesary lines
-	sed -i -e '/#EXTINF/d' "$TARGET"
+	sed -i "" -e '/\#EXTINF/d' "$TARGET"
 	
 	cat "$TARGET" | while read line						  
 	do
@@ -22,7 +22,7 @@ do
 			ARTIST=`echo "$line" | awk -F "/" '{ print $(NF - 2) }'`
 
 			# relpace whole file paths for Android
-			sed -i -e "/$MUSIC\$/s/.*/$ARTIST\/$ALBUM\/$MUSIC/" "$TARGET"
+			sed -i "" -e "/$MUSIC\$/s/.*/$ARTIST\/$ALBUM\/$MUSIC/" "$TARGET"
 
 			# copy music file to proper folder
 			mkdir -p output/music/"$ARTIST"/"$ALBUM"
