@@ -1,4 +1,6 @@
-#!bin/bash
+#!/bin/bash
+
+cd `dirname $0`
 
 for org in original/*.m3u
 do
