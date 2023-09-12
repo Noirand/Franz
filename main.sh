@@ -27,8 +27,10 @@ do
 			sed -i "" -e "/$MUSIC\$/s/.*/$ARTIST\/$ALBUM\/$MUSIC/" "$TARGET"
 
 			# copy music file to proper folder
-			mkdir -p output/music/"$ARTIST"/"$ALBUM"
-			cp "$line" ./output/music/"$ARTIST"/"$ALBUM"
+			if [ "$1" != "-dc" ]; then
+				mkdir -p output/music/"$ARTIST"/"$ALBUM"
+				cp "$line" ./output/music/"$ARTIST"/"$ALBUM"
+			fi
 		fi
 	done
 done
