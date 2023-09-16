@@ -22,9 +22,11 @@ do
 			MUSIC="${line##*/}"
 			ALBUM=$(echo "$line" | awk -F "/" '{ print $(NF - 1) }')
 			ARTIST=$(echo "$line" | awk -F "/" '{ print $(NF - 2) }')
+			# escape "&"
+			DSTPATH=$(echo "$ARTIST\/$ALBUM\/$MUSIC" | sed -e 's/\&/\\&/g')
 
 			# relpace whole file paths for Android
-			sed -i "" -e "/$MUSIC\$/s/.*/$ARTIST\/$ALBUM\/$MUSIC/" "$TARGET"
+			sed -i "" -e "/$MUSIC/s|.*|$DSTPATH|" "$TARGET"
 
 			# copy music file to proper folder
 			if [ "$1" != "-dc" ]; then

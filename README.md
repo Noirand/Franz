@@ -10,7 +10,7 @@ Convert iTunes playlist to YTMusic playlist
 6. You should get .m3u file and music files for YTMusic. Enjoy.
 
 ## Known issues
-1. output .m3u file is broken when original path includes "&"
+Nothing for now.
 
 ## Notes
 Some notes I want to write(but not yet).
