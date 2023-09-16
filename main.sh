@@ -20,8 +20,8 @@ do
 		#echo "${line}"
 		if [ "$line" != "#EXTM3U" ]; then
 			MUSIC="${line##*/}"
-			ALBUM=`echo "$line" | awk -F "/" '{ print $(NF - 1) }'`
-			ARTIST=`echo "$line" | awk -F "/" '{ print $(NF - 2) }'`
+			ALBUM=$(echo "$line" | awk -F "/" '{ print $(NF - 1) }')
+			ARTIST=$(echo "$line" | awk -F "/" '{ print $(NF - 2) }')
 
 			# relpace whole file paths for Android
 			sed -i "" -e "/$MUSIC\$/s/.*/$ARTIST\/$ALBUM\/$MUSIC/" "$TARGET"
